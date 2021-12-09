@@ -39,10 +39,10 @@ public class Scenario {
      * @param b le bandeau ou s'afficher.
      */
     public void playOn(Bandeau b) {
-        for (ScenarioElement element : myElements) {
-            for (int repeats = 0; repeats < element.repeats; repeats++) {
-                element.effect.playOn(b);
-            }
-        }
+        // On crée un Thread ayant pour caractéristiques notre bandeau et notre liste d'effets
+        MultiScenario msc = new MultiScenario(b, this.myElements);
+        
+        // On run notre Thread
+        msc.start();
     }
 }
